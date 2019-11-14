@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/Psei.InterviewTask
+/Psei.InterviewTask.Tests.Unit/bin/Debug/netcoreapp2.2
+/Psei.InterviewTask.Tests.Unit/obj
+/Psei.InterviewTask.Web/bin/Debug/netcoreapp2.2
+/Psei.InterviewTask.Web/obj
