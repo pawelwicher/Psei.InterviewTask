@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Psei.InterviewTask.Web.Model;
+using Psei.InterviewTask.Web.Dto;
 using Psei.InterviewTask.Web.Repository;
 
 namespace Psei.InterviewTask.Web.Controllers
@@ -27,12 +27,11 @@ namespace Psei.InterviewTask.Web.Controllers
         /// <returns>List of Departments</returns>
         /// <response code="200">Returns list of Departments</response>
         [HttpGet()]
-        public async Task<ActionResult<IReadOnlyCollection<Department>>> Get()
+        public async Task<ActionResult<IReadOnlyCollection<DepartmentDto>>> Get()
         {
             var result = await _departmentRepository.GetAll();
 
             return Ok(result);
-
         }
     }
 }

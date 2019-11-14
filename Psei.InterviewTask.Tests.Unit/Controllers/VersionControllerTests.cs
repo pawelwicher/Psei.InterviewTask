@@ -8,7 +8,7 @@ namespace Psei.InterviewTask.Tests.Unit.Controllers
     public class VersionControllerTests
     {
         [Fact]
-        public void Get_Always_ReturnsNonEmptyVersion()
+        public void Get_Should_ReturnProperResult()
         {
             var controller = CreateController();
 
