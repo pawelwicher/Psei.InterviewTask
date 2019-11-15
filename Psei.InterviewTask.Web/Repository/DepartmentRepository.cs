@@ -1,29 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Psei.InterviewTask.Web.DataAccess;
-using Psei.InterviewTask.Web.Dto;
-using Psei.InterviewTask.Web.Mappers;
+using Psei.InterviewTask.Web.Model;
 
 namespace Psei.InterviewTask.Web.Repository
 {
     public class DepartmentRepository : IDepartmentRepository
     {
         private readonly StudentsDbContext _context;
-        private readonly IDepartmentDtoMapper _mapper;
 
-        public DepartmentRepository(StudentsDbContext context, IDepartmentDtoMapper mapper)
+        public DepartmentRepository(StudentsDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
-        public async Task<IReadOnlyCollection<DepartmentDto>> GetAll()
+        public async Task<IReadOnlyCollection<Department>> GetAll()
         {
             var models = await _context.Departments.ToListAsync();
 
-            return models.Select(_mapper.Map).ToList().AsReadOnly();
+            return models.AsReadOnly();
         }
     }
 }

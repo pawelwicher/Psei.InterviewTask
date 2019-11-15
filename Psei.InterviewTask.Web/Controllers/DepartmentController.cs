@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Psei.InterviewTask.Web.Dto;
@@ -29,7 +30,15 @@ namespace Psei.InterviewTask.Web.Controllers
         [HttpGet()]
         public async Task<ActionResult<IReadOnlyCollection<DepartmentDto>>> Get()
         {
-            var result = await _departmentRepository.GetAll();
+            var models = await _departmentRepository.GetAll();
+
+
+            var result = models.Select(model => new DepartmentDto
+            {
+                Id = model.Id,
+                Name = model.Name,
+                FullName = $"Departament of {model.Name}"
+            }).ToArray();
 
             return Ok(result);
         }

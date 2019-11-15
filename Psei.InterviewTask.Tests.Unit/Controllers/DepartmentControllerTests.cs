@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using Psei.InterviewTask.Web.Controllers;
 using Psei.InterviewTask.Web.Dto;
+using Psei.InterviewTask.Web.Model;
 using Psei.InterviewTask.Web.Repository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Psei.InterviewTask.Tests.Unit.Controllers
         private DepartmentController CreateController()
         {
             var repo = Substitute.For<IDepartmentRepository>();
-            repo.GetAll().Returns(Task.FromResult(new[] { new DepartmentDto() }).GetAwaiter().GetResult());
+            repo.GetAll().Returns(Task.FromResult(new[] { new Department() }).GetAwaiter().GetResult());
 
             return new DepartmentController(repo);
         }

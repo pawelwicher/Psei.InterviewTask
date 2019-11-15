@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Psei.InterviewTask.Web.Configuration;
 using Psei.InterviewTask.Web.DataAccess;
-using Psei.InterviewTask.Web.Mappers;
 using Psei.InterviewTask.Web.Repository;
 
 namespace Psei.InterviewTask.Web
@@ -26,8 +25,6 @@ namespace Psei.InterviewTask.Web
 
             services.AddDbContext<StudentsDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddScoped<IDepartmentDtoMapper, DepartmentDtoMapper>();
 
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
         }
